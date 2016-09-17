@@ -35,6 +35,7 @@ RUN mkdir -p /usr/local/openssl/include/openssl/ && \
 RUN pecl install mongodb
 
 RUN echo "extension=mongodb.so" > /etc/php/7.0/cli/conf.d/20-mongodb.ini && \
+    chmod 0777 /etc/php/7.0/fpm/conf.d/20-mongodb.ini && \
 	echo "extension=mongodb.so" > /etc/php/7.0/mods-available/mongodb.ini
 
 RUN curl -sS https://getcomposer.org/installer | php && \
