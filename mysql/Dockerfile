@@ -1,8 +1,6 @@
-FROM mysql:latest
+FROM mysql
 
 MAINTAINER Starriv <starriv.993@gmail.com>
-
-# ADD my.cnf /etc/mysql/conf.d/my.cnf
 
 CMD ["mysqld"]
 
