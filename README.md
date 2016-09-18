@@ -1,7 +1,6 @@
 # Laravel on Docker
 
-感谢[laradock](https://github.com/LaraDock/laradock).
-基于laradock 做了一些精简优化
+希望成为一个好用的Laravel 的Docker开发环境，取代Homestead，享受容器技术带来的便利。
 
 ### 包含的容器
 
@@ -39,3 +38,6 @@
 
 0x3
 - `docker-compose build | up {containername}`
+
+### 致谢
+[laradock](https://github.com/LaraDock/laradock)
