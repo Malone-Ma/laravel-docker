@@ -36,6 +36,7 @@ services:
     build: ./mysql
     volumes:
       - ./data/mysql:/var/lib/mysql
+      - ./logs/mysql:/var/log/mysql
       - ./mysql/conf:/etc/mysql/conf.d
     ports:
       - "3306:3306"
@@ -45,6 +46,19 @@ services:
       MYSQL_PASSWORD: secret
       MYSQL_ROOT_PASSWORD: root
 
+##### postgresql container #####
+  postgresql:
+    build: ./postgresql
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+      - ./logs/postgres:/var/log/postgresql
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: docker
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: secret
+
 ##### phpmyadmin container #####
   phpmyadmin:
     build: ./phpmyadmin
@@ -53,10 +67,20 @@ services:
       MYSQL_USER: docker
       MYSQL_PASSWORD: secret
       MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./data/phpmyadmin:/sessions
     ports:
       - "8081:80"
     links:
       - "mysql:db"
+
+##### pgadmin container #####
+  pgadmin:
+    build: ./pgadmin
+    ports:
+      - "5650:5650"
+    links:
+      - postgresql
 
 ###### redis container #####
   redis:
@@ -72,11 +96,36 @@ services:
     build: ./mongodb
     ports:
       - "28017:28017"
-      - "27017:27017"
-    environment:
-      AUTH: 'no'
-      MONGODB_USER: docker
-      MONGODB_DATABASE: docker
-      MONGODB_PASS: secret
+      - "26017:27017"
     volumes:
       - ./data/mongodb:/data/db
+      - ./logs/mongodb:/var/log/mongodb
+
+##### rabbitmq container #####
+  rabbitmq:
+    build: ./rabbitmq
+    ports:
+      - "5672:5672"
+      - "15671:15671"
+      - "8088:15672"
+    privileged: true
+    volumes:
+      - ./data/rabbitmq:/var/log/rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: docker
+      RABBITMQ_DEFAULT_PASS: secret
+    # links:
+    #   - php-fpm
+
+##### elasticsearch container #####
+  elasticsearch:
+    build: ./elasticsearch
+    volumes:
+      - ./data/elasticsearch:/usr/share/elasticsearch/data
+      - ./elasticsearch/conf:/usr/share/elasticsearch/config
+      - ./data/elasticsearch:/usr/share/elasticsearch/logs
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    # links:
+    #   - php-fpm
