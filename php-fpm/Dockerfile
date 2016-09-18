@@ -3,11 +3,10 @@ FROM ubuntu:14.04
 RUN sed -i 's/http:\/\/archive\.ubuntu\.com\/ubuntu\//http:\/\/mirrors\.aliyun\.com\/ubuntu\//g' /etc/apt/sources.list
 
 RUN echo 'deb http://ppa.launchpad.net/ondrej/php/ubuntu trusty main' > /etc/apt/sources.list.d/php.list
-
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C
+RUN apt-get update
 
-RUN apt-get update && \
-    apt-get install -y \
+RUN apt-get install -y \
     curl \
     libmemcached-dev \
     libz-dev \

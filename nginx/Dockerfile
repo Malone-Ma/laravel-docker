@@ -2,7 +2,7 @@ FROM nginx:alpine
 
 MAINTAINER Starriv <starriv.993@gmail.com>
 
-ADD nginx.conf /etc/nginx/
+#ADD nginx.conf /etc/nginx/
 COPY vhost/*.conf /etc/nginx/sites-available/
 
 #ARG PHP_UPSTREAM=php-fpm
