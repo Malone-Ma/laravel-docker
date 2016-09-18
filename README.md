@@ -1,6 +1,6 @@
 # Laravel on Docker
 
-希望成为一个好用的Laravel 的Docker开发环境，取代Homestead，享受容器技术带来的便利。
+希望成为一个好用的Laravel 的Docker开发环境，取代Homestead，改善开发体验，享受容器技术带来的便利。
 
 ### 包含的容器
 
