@@ -20,8 +20,8 @@ services:
   nginx:
     build:
       context: ./nginx
-      args:
-        - PHP_UPSTREAM=php-fpm
+#      args:
+#        - PHP_UPSTREAM=php-fpm
     volumes:
       - ./logs/nginx/:/var/log/nginx
       - ./workspace/app:/var/www
