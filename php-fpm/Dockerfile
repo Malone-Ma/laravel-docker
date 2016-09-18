@@ -52,5 +52,3 @@ ADD ./php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
 WORKDIR /var/www
 RUN chown -R docker:docker /var/www
 CMD /usr/sbin/php-fpm7.0 --nodaemonize
-
-EXPOSE 3000
