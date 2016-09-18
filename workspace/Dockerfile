@@ -56,5 +56,3 @@ WORKDIR /home/docker
 
 ADD app/* /home/docker
 RUN chown -R docker:docker /home/docker
-
-EXPOSE 9000
