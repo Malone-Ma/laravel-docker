@@ -17,6 +17,7 @@ RUN apt-get update && \
        php7.0-zip \
        php7.0-xml \
        php7.0-opcache \
+       php7.0-mbstring \
        php7.0-intl \
        php7.0-json \
        php7.0-pgsql \
